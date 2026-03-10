@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Cameroon University Directory</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #000000;
+            border-bottom: 2px solid #FFD700;
+        }
+        header nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 24px;
+            font-weight: 500;
+        }
+        header nav a:hover {
+            color: #FFD700;
+        }
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #333333;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        .card h2 {
+            color: #FFD700;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 16px;
+        }
+        .card h3 {
+            color: #FFD700;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .card p {
+            color: #cccccc;
+            line-height: 1.5;
+        }
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .btn-primary {
+            background: #FFD700;
+            color: #000000;
+            border: 2px solid #FFD700;
+        }
+        footer {
+            background: #000000;
+            color: #ffffff;
+            padding: 48px 20px;
+            text-align: center;
+            border-top: 2px solid #FFD700;
+        }
+        footer a {
+            color: #cccccc;
+            text-decoration: none;
+            margin: 0 12px;
+        }
+        footer a:hover {
+            color: #FFD700;
+            
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo h1 {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0;
+        }
+        nav {
+            display: none;
+        }
+        @media (min-width: 768px) {
+            nav {
+                display: flex;
+            }
+            .menu-btn {
+                display: none;
+            }
+        }
+    </style>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="container">
+            <div class="flex">
+                <div class="logo">
+                    <i data-lucide="graduation-cap" style="width: 32px; height: 32px; color: #FFD700;"></i>
+                    <h1>Cameroon University Directory</h1>
+                </div>
+                <nav>
+                    <a href="index.html">Home</a>
+                    <a href="search.html">Search</a>
+                    <a href="about.html">About</a>
+                    <a href="student-dashboard.html">Dashboard</a>
+                    <a href="index.html">Logout</a>
+                </nav>
+                <button class="menu-btn">
+                    <i data-lucide="menu" style="width: 24px; height: 24px;"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <div style="padding: 32px 20px;">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <!-- Welcome Section -->
+            <div class="card">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <h1 style="font-size: 32px; margin-bottom: 8px;">Welcome back, John Student!</h1>
+                        <p style="margin-top: 8px;">Manage your university search and saved schools</p>
+                    </div>
+                    <div style="display: flex; gap: 16px;">
+                        <a href="search.html" class="btn btn-primary">
+                            Search Schools
+                        </a>
+                        <button class="btn btn-secondary">
+                            Edit Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Grid -->
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 32px;">
+                <!-- Saved Schools -->
+                <div>
+                    <div class="card">
+                        <h2>Saved Schools</h2>
+                        <div style="display: flex; flex-direction: column; gap: 16px;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px; background: #0a0a0a; border-radius: 8px;">
+                                <div style="display: flex; align-items: center; gap: 16px;">
+                                    <div style="width: 48px; height: 48px; background: rgba(255, 215, 0, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                        <i data-lucide="graduation-cap" style="width: 24px; height: 24px; color: #FFD700;"></i>
+                                    </div>
+                                    <div>
+                                        <h3 style="color: #ffffff; font-weight: 600; margin: 0;">University of Yaoundé I</h3>
+                                        <p style="font-size: 14px; color: #cccccc;">Public University • Centre</p>
+                                    </div>
+                                </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <a href="school-profile.html" style="padding: 8px 16px; font-size: 14px; background: #FFD700; color: #000000; border-radius: 6px; text-decoration: none;">
+                                        View
+                                    </a>
+                                    <button style="padding: 8px 16px; font-size: 14px; background: rgba(255, 0, 0, 0.1); color: #ff4444; border: 1px solid #ff4444; border-radius: 6px;">
+                                        Remove
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                                <div style="display: flex; align-items: center; gap: 16px;">
+                                    <div style="width: 48px; height: 48px; background: rgba(255, 215, 0, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                        <i data-lucide="graduation-cap" style="width: 24px; height: 24px; color: #FFD700;"></i>
+                                    </div>
+                                    <div>
+                                        <h3 style="color: #ffffff; font-weight: 600; margin: 0;">University of Buea</h3>
+                                        <p style="font-size: 14px; color: #cccccc;">Public University • Southwest</p>
+                                    </div>
+                                </div>
+                                <div style="display: flex; gap: 8px;">
+                                    <a href="school-profile.html" style="padding: 8px 16px; font-size: 14px; background: #FFD700; color: #000000; border-radius: 6px; text-decoration: none;">
+                                        View
+                                    </a>
+                                    <button style="padding: 8px 16px; font-size: 14px; background: rgba(255, 0, 0, 0.1); color: #ff4444; border: 1px solid #ff4444; border-radius: 6px;">
+                                        Remove
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div style="display: flex; flex-direction: column; gap: 24px;">
+                    <!-- Profile Summary -->
+                    <div class="card">
+                        <h3>Profile Summary</h3>
+                        <div style="display: flex; flex-direction: column; gap: 12px;">
+                            <div style="display: flex; justify-content: space-between;">
+                                <span style="color: #cccccc;">Saved Schools</span>
+                                <span style="color: #ffffff; font-weight: 600;">2</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span style="color: #cccccc;">Profile Status</span>
+                                <span style="color: #4CAF50; font-weight: 600;">Complete</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between;">
+                                <span style="color: #cccccc;">Member Since</span>
+                                <span style="color: #ffffff; font-weight: 600;">2024</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recommendations -->
+                    <div class="card">
+                        <h3>Recommended Schools</h3>
+                        <div style="display: flex; flex-direction: column; gap: 12px;">
+                            <div style="display: flex; align-items: center; gap: 12px; padding: 8px; border-radius: 8px; cursor: pointer; transition: background 0.3s;">
+                                <div style="width: 32px; height: 32px; background: rgba(255, 215, 0, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <i data-lucide="graduation-cap" class="w-4 h-4 text-blue-600"></i>
+                                </div>
+                                <div style="flex: 1;">
+                                    <h4 style="font-size: 14px; font-weight: 600; color: #ffffff; margin: 0 0 4px;">University of Dschang</h4>
+                                    <p style="font-size: 12px; color: #cccccc;">West</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 12px; padding: 8px; border-radius: 8px; cursor: pointer; transition: background 0.3s;">
+                                <div style="width: 32px; height: 32px; background: rgba(255, 215, 0, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <i data-lucide="graduation-cap" style="width: 16px; height: 16px; color: #FFD700;"></i>
+                                </div>
+                                <div style="flex: 1;">
+                                    <h4 style="font-size: 14px; font-weight: 600; color: #ffffff; margin: 0 0 4px;">University of Maroua</h4>
+                                    <p style="font-size: 12px; color: #cccccc;">West</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-lg font-bold text-gray-900 mb-4">Quick Actions</h3>
+                        <div class="space-y-2">
+                            <a href="search.html" class="w-full text-left px-3 py-2 text-gray-700 hover:bg-gray-50 rounded transition-colors block">
+                                <i data-lucide="search" class="w-4 h-4 mr-2 inline"></i>
+                                Search Schools
+                            </a>
+                            <button class="w-full text-left px-3 py-2 text-gray-700 hover:bg-gray-50 rounded transition-colors block">
+                                <i data-lucide="user" class="w-4 h-4 mr-2 inline"></i>
+                                Edit Profile
+                            </button>
+                            <a href="index.html" class="w-full text-left px-3 py-2 text-gray-700 hover:bg-gray-50 rounded transition-colors block">
+                                <i data-lucide="log-out" class="w-4 h-4 mr-2 inline"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 24px;">
+                <i data-lucide="graduation-cap" style="width: 24px; height: 24px; color: #FFD700; margin-right: 8px;"></i>
+                <h3 style="color: #ffffff; font-size: 18px; font-weight: bold; display: inline; margin: 0;">Cameroon University Directory</h3>
+            </div>
+            <p style="color: #cccccc; margin-bottom: 24px;">
+                Your gateway to higher education opportunities in Cameroon
+            </p>
+            <div style="display: flex; justify-content: center; gap: 24px; margin-bottom: 24px;">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="search.html">Search</a>
+                <a href="student-login.html">Student Login</a>
+                <a href="school-login.html">School Login</a>
+            </div>
+            <div style="border-top: 1px solid #333333; padding-top: 24px; color: #cccccc;">
+                <p>&copy; 2024 Cameroon University Directory. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>

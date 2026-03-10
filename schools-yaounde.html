@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schools in Yaoundé - Cameroon University Directory</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 3px solid #FFD700;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.2);
+        }
+
+        header .flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        header .logo h1 {
+            color: #FFD700;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        header nav {
+            display: none;
+        }
+
+        header nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 32px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        header nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #FFD700;
+            transition: width 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #FFD700;
+            transform: translateY(-2px);
+        }
+
+        header nav a:hover::after {
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            header nav {
+                display: flex;
+            }
+            header .menu-btn {
+                display: none;
+            }
+        }
+
+        .hero {
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+            padding: 80px 20px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="100" fill="rgba(255,215,0,0.03)">🎓</text></svg>');
+            background-size: 100px 100px;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-50px, -50px); }
+        }
+
+        .hero h1 {
+            color: #FFD700;
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 16px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #cccccc;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .breadcrumb {
+            background: rgba(26, 26, 26, 0.8);
+            padding: 16px 20px;
+            border-bottom: 1px solid #333333;
+        }
+
+        .breadcrumb-nav {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: #cccccc;
+        }
+
+        .breadcrumb-nav a {
+            color: #FFD700;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb-nav a:hover {
+            color: #FFC700;
+        }
+
+        .content-section {
+            padding: 60px 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            color: #FFD700;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .section-header p {
+            color: #cccccc;
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border: 2px solid #FFD700;
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .stat-card:hover::before {
+            left: 100%;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(255, 215, 0, 0.3);
+            border-color: #FFC700;
+        }
+
+        .stat-card .number {
+            font-size: 48px;
+            font-weight: 800;
+            color: #FFD700;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .stat-card .label {
+            font-size: 16px;
+            color: #cccccc;
+            font-weight: 600;
+        }
+
+        .school-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 32px;
+            margin-bottom: 60px;
+        }
+
+        .school-card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border: 2px solid #FFD700;
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .school-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .school-card:hover::before {
+            left: 100%;
+        }
+
+        .school-card:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.3);
+            border-color: #FFC700;
+        }
+
+        .school-card h3 {
+            color: #FFD700;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .school-card .type {
+            color: #cccccc;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            padding: 4px 12px;
+            background: rgba(255, 215, 0, 0.1);
+            border: 1px solid #FFD700;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .school-card p {
+            color: #cccccc;
+            line-height: 1.6;
+            margin-bottom: 24px;
+            font-size: 14px;
+        }
+
+        .school-card .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .school-card .feature {
+            background: rgba(10, 10, 10, 0.6);
+            border: 1px solid #333333;
+            border-radius: 8px;
+            padding: 6px 12px;
+            font-size: 12px;
+            color: #cccccc;
+            transition: all 0.3s ease;
+        }
+
+        .school-card .feature:hover {
+            border-color: #FFD700;
+            color: #FFD700;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FFD700, #FFC700);
+            color: #000000;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+            background: linear-gradient(135deg, #FFC700, #FFD700);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #FFD700;
+            border: 2px solid #FFD700;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: #FFD700;
+            color: #000000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .filter-section {
+            background: rgba(26, 26, 26, 0.8);
+            border: 1px solid #333333;
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 40px;
+        }
+
+        .filter-section h3 {
+            color: #FFD700;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .filter-tag {
+            background: rgba(10, 10, 10, 0.6);
+            border: 1px solid #333333;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 14px;
+            color: #cccccc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-tag:hover,
+        .filter-tag.active {
+            border-color: #FFD700;
+            color: #FFD700;
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        footer {
+            background: linear-gradient(180deg, #000000 0%, #1a1a1a 100%);
+            color: #ffffff;
+            padding: 60px 20px 40px;
+            text-align: center;
+            border-top: 3px solid #FFD700;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        footer .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        footer .footer-logo i {
+            width: 32px;
+            height: 32px;
+            color: #FFD700;
+        }
+
+        footer .footer-logo h3 {
+            color: #FFD700;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        footer p {
+            color: #cccccc;
+            margin-bottom: 32px;
+            font-size: 16px;
+        }
+
+        footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        footer .footer-links a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        footer .footer-links a:hover {
+            color: #FFD700;
+            transform: translateY(-2px);
+        }
+
+        footer .footer-bottom {
+            border-top: 1px solid #333333;
+            padding-top: 32px;
+            color: #cccccc;
+        }
+
+        @media (max-width: 767px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+
+            .content-section {
+                padding: 40px 20px;
+            }
+
+            .section-header h2 {
+                font-size: 28px;
+            }
+
+            .school-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="container">
+            <div class="flex">
+                <div class="logo">
+                    <i data-lucide="graduation-cap"></i>
+                    <h1>Cameroon University Directory</h1>
+                </div>
+                <nav>
+                    <a href="index.html">Home</a>
+                    <a href="search.html">Search</a>
+                    <a href="about.html">About</a>
+                    <a href="student-login.html">Student Login</a>
+                    <a href="school-login.html">School Login</a>
+                </nav>
+                <button class="menu-btn">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <h1>Universities in Yaoundé</h1>
+            <p>
+                Discover 15+ higher education institutions in Cameroon's capital city
+            </p>
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-nav">
+                <a href="index.html">Home</a>
+                <span>›</span>
+                <a href="search.html">Search</a>
+                <span>›</span>
+                <a href="search.html">By City</a>
+                <span>›</span>
+                <span>Yaoundé</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content-section">
+        <div class="container">
+            <!-- Section Header -->
+            <div class="section-header">
+                <h2>Yaoundé Education Hub</h2>
+                <p>
+                    Cameroon's capital city hosts the nation's most prestigious universities and educational institutions
+                </p>
+            </div>
+
+            <!-- Statistics -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="number">15</div>
+                    <div class="label">Total Schools</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">40,000+</div>
+                    <div class="label">Students</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">200+</div>
+                    <div class="label">Programs</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">8</div>
+                    <div class="label">Public Universities</div>
+                </div>
+            </div>
+
+            <!-- Filter Section -->
+            <div class="filter-section">
+                <h3>Filter by Type</h3>
+                <div class="filter-tags">
+                    <div class="filter-tag active" onclick="filterSchools('all')">All Schools</div>
+                    <div class="filter-tag" onclick="filterSchools('public')">Public Universities</div>
+                    <div class="filter-tag" onclick="filterSchools('private')">Private Universities</div>
+                    <div class="filter-tag" onclick="filterSchools('professional')">Professional Schools</div>
+                    <div class="filter-tag" onclick="filterSchools('technical')">Technical Schools</div>
+                </div>
+            </div>
+
+            <!-- Schools Grid -->
+            <div class="school-grid" id="schoolsGrid">
+                <div class="school-card" data-type="public">
+                    <h3>University of Yaoundé I</h3>
+                    <span class="type">Public University</span>
+                    <p>
+                        Cameroon's premier university offering comprehensive programs in sciences, humanities, and professional studies. Established in 1962.
+                    </p>
+                    <div class="features">
+                        <span class="feature">Research Excellence</span>
+                        <span class="feature">200+ Programs</span>
+                        <span class="feature">International Recognition</span>
+                    </div>
+                    <a href="school-university-yaounde1.html" class="btn btn-primary">View Details</a>
+                </div>
+
+                <div class="school-card" data-type="public">
+                    <h3>University of Yaoundé II</h3>
+                    <span class="type">Public University</span>
+                    <p>
+                        Specialized university focusing on technology, engineering, and management sciences with strong industry partnerships.
+                    </p>
+                    <div class="features">
+                        <span class="feature">Engineering Focus</span>
+                        <span class="feature">Industry Partnerships</span>
+                        <span class="feature">Modern Facilities</span>
+                    </div>
+                    <a href="school-university-yaounde1.html" class="btn btn-primary">View Details</a>
+                </div>
+
+                <div class="school-card" data-type="private">
+                    <h3>Catholic University of Central Africa</h3>
+                    <span class="type">Private University</span>
+                    <p>
+                        Prestigious private institution offering programs in theology, philosophy, social sciences, and management.
+                    </p>
+                    <div class="features">
+                        <span class="feature">Religious Studies</span>
+                        <span class="feature">Social Sciences</span>
+                        <span class="feature">Management Programs</span>
+                    </div>
+                    <a href="school-university-yaounde1.html" class="btn btn-primary">View Details</a>
+                </div>
+
+                <div class="school-card" data-type="professional">
+                    <h3>International Relations Institute</h3>
+                    <span class="type">Professional School</span>
+                    <p>
+                        Premier institution for diplomatic studies, international relations, and political science training.
+                    </p>
+                    <div class="features">
+                        <span class="feature">Diplomatic Training</span>
+                        <span class="feature">International Relations</span>
+                        <span class="feature">Political Science</span>
+                    </div>
+                    <a href="school-university-yaounde1.html" class="btn btn-primary">View Details</a>
+                </div>
+
+                <div class="school-card" data-type="professional">
+                    <h3>National School of Administration</h3>
+                    <span class="type">Professional School</span>
+                    <p>
+                        Elite institution training civil servants and public administrators for government service.
+                    </p>
+                    <div class="features">
+                        <span class="feature">Public Administration</span>
+                        <span class="feature">Civil Service Training</span>
+                        <span class="feature">Government Studies</span>
+                    </div>
+                    <a href="school-university-yaounde1.html" class="btn btn-primary">View Details</a>
+                </div>
+
+                <div class="school-card" data-type="professional">
+                    <h3>Higher Teacher Training College</h3>
+                    <span class="type">Professional School</span>
+                    <p>
+                        Leading institution for teacher education and pedagogical research in Cameroon.
+                    </p>
+                    <div class="features">
+                        <span class="feature">Teacher Education</span>
+                        <span class="feature">Pedagogical Research</span>
+                        <span class="feature">Educational Innovation</span>
+                    </div>
+                    <a href="school-university-yaounde1.html" class="btn btn-primary">View Details</a>
+                </div>
+
+                <div class="school-card" data-type="technical">
+                    <h3>Polytechnic Yaoundé</h3>
+                    <span class="type">Technical School</span>
+                    <p>
+                        Technical institution offering engineering, technology, and applied sciences programs.
+                    </p>
+                    <div class="features">
+                        <span class="feature">Engineering Programs</span>
+                        <span class="feature">Applied Sciences</span>
+                        <span class="feature">Technical Innovation</span>
+                    </div>
+                    <a href="school-university-yaounde1.html" class="btn btn-primary">View Details</a>
+                </div>
+
+                <div class="school-card" data-type="professional">
+                    <h3>Advanced School of Economics</h3>
+                    <span class="type">Professional School</span>
+                    <p>
+                        Specialized institution for economics, finance, and business management studies.
+                    </p>
+                    <div class="features">
+                        <span class="feature">Economics</span>
+                        <span class="feature">Finance</span>
+                        <span class="feature">Business Management</span>
+                    </div>
+                    <a href="school-university-yaounde1.html" class="btn btn-primary">View Details</a>
+                </div>
+
+                <div class="school-card" data-type="professional">
+                    <h3>Fine Arts Institute</h3>
+                    <span class="type">Professional School</span>
+                    <p>
+                        Creative institution offering programs in visual arts, design, and cultural studies.
+                    </p>
+                    <div class="features">
+                        <span class="feature">Visual Arts</span>
+                        <span class="feature">Design Programs</span>
+                        <span class="feature">Cultural Studies</span>
+                    </div>
+                    <a href="school-university-yaounde1.html" class="btn btn-primary">View Details</a>
+                </div>
+
+                <div class="school-card" data-type="professional">
+                    <h3>Journalism School</h3>
+                    <span class="type">Professional School</span>
+                    <p>
+                        Premier institution for media studies, journalism, and communication training.
+                    </p>
+                    <div class="features">
+                        <span class="feature">Journalism</span>
+                        <span class="feature">Media Studies</span>
+                        <span class="feature">Communication</span>
+                    </div>
+                    <a href="school-university-yaounde1.html" class="btn btn-primary">View Details</a>
+                </div>
+
+                <div class="school-card" data-type="technical">
+                    <h3>Agricultural Institute</h3>
+                    <span class="type">Technical School</span>
+                    <p>
+                        Institution focused on agricultural sciences, food technology, and rural development.
+                    </p>
+                    <div class="features">
+                        <span class="feature">Agricultural Sciences</span>
+                        <span class="feature">Food Technology</span>
+                        <span class="feature">Rural Development</span>
+                    </div>
+                    <a href="school-university-yaounde1.html" class="btn btn-primary">View Details</a>
+                </div>
+
+                <div class="school-card" data-type="professional">
+                    <h3>Medical Center Yaoundé</h3>
+                    <span class="type">Professional School</span>
+                    <p>
+                        Medical institution offering health sciences, medicine, and healthcare programs.
+                    </p>
+                    <div class="features">
+                        <span class="feature">Health Sciences</span>
+                        <span class="feature">Medical Programs</span>
+                        <span class="feature">Healthcare Training</span>
+                    </div>
+                    <a href="school-university-yaounde1.html" class="btn btn-primary">View Details</a>
+                </div>
+
+                <div class="school-card" data-type="professional">
+                    <h3>Legal Studies Institute</h3>
+                    <span class="type">Professional School</span>
+                    <p>
+                        Institution for legal education, law studies, and judicial training.
+                    </p>
+                    <div class="features">
+                        <span class="feature">Legal Education</span>
+                        <span class="feature">Law Studies</span>
+                        <span class="feature">Judicial Training</span>
+                    </div>
+                    <a href="school-university-yaounde1.html" class="btn btn-primary">View Details</a>
+                </div>
+
+                <div class="school-card" data-type="private">
+                    <h3>Business School Yaoundé</h3>
+                    <span class="type">Private University</span>
+                    <p>
+                        Private business school offering MBA, management, and entrepreneurship programs.
+                    </p>
+                    <div class="features">
+                        <span class="feature">MBA Programs</span>
+                        <span class="feature">Management Studies</span>
+                        <span class="feature">Entrepreneurship</span>
+                    </div>
+                    <a href="school-university-yaounde1.html" class="btn btn-primary">View Details</a>
+                </div>
+
+                <div class="school-card" data-type="technical">
+                    <h3>Computer Science Institute</h3>
+                    <span class="type">Technical School</span>
+                    <p>
+                        Modern institution for IT, computer science, and digital technology education.
+                    </p>
+                    <div class="features">
+                        <span class="feature">Computer Science</span>
+                        <span class="feature">IT Programs</span>
+                        <span class="feature">Digital Technology</span>
+                    </div>
+                    <a href="school-university-yaounde1.html" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <i data-lucide="graduation-cap"></i>
+                <h3>Cameroon University Directory</h3>
+            </div>
+            <p>Your gateway to higher education opportunities in Cameroon</p>
+            <div class="footer-links">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="search.html">Search</a>
+                <a href="student-login.html">Student Login</a>
+                <a href="school-login.html">School Login</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Cameroon University Directory. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        function filterSchools(type) {
+            // Remove active class from all tags
+            document.querySelectorAll('.filter-tag').forEach(tag => {
+                tag.classList.remove('active');
+            });
+            
+            // Add active class to clicked tag
+            event.target.classList.add('active');
+            
+            // Filter school cards
+            const schoolCards = document.querySelectorAll('.school-card');
+            
+            schoolCards.forEach(card => {
+                if (type === 'all' || card.dataset.type === type) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    }, 10);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+    </script>
+</body>
+</html>

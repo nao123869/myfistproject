@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Login - Cameroon University Directory</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #000000 ;
+            color: #ffffff
+            font-family: Arial, sans-serif;
+            margin: 0 ;
+            padding: 0 ;
+        }
+        header {
+            background-color: #000000 !important;
+            border-bottom: 2px solid #FFD700 !important;
+        }
+        header nav a {
+            color: #ffffff !important;
+            text-decoration: none !important;
+            margin-left: 24px !important;
+            font-weight: 500 !important;
+        }
+        header nav a:hover {
+            color: #FFD700 !important;
+        }
+        .hero {
+            background: linear-gradient(to right, #000000, #1a1a1a) !important;
+            padding: 64px 20px !important;
+            text-align: center !important;
+            border-bottom: 3px solid #FFD700 !important;
+        }
+        .card {
+            background: #1a1a1a !important;
+            border: 1px solid #333333 !important;
+            border-radius: 8px !important;
+            padding: 24px !important;
+            margin: 0 auto !important;
+            max-width: 400px !important;
+        }
+        .form-control {
+            width: 100% !important;
+            padding: 12px !important;
+            border: 2px solid #FFD700 !important;
+            border-radius: 6px !important;
+            font-size: 16px !important;
+            background-color: #1a1a1a !important;
+            color: #ffffff !important;
+        }
+        .btn {
+            padding: 12px 24px !important;
+            border: none !important;
+            border-radius: 6px !important;
+            cursor: pointer !important;
+            font-size: 16px !important;
+            font-weight: 500 !important;
+        }
+        .btn-primary {
+            background: #FFD700 !important;
+            color: #000000 !important;
+            border: 2px solid #FFD700 !important;
+        }
+        footer {
+            background: #000000 !important;
+            color: #ffffff !important;
+            padding: 48px 20px !important;
+            text-align: center !important;
+            border-top: 2px solid #FFD700 !important;
+        }
+        footer a {
+            color: #cccccc !important;
+            text-decoration: none !important;
+            margin: 0 12px !important;
+        }
+        footer a:hover {
+            color: #FFD700 !important;
+        }
+        .container {
+            max-width: 1200px !important;
+            margin: 0 auto !important;
+            padding: 0 20px !important;
+        }
+        .flex {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            padding: 16px 0 !important;
+        }
+        .logo {
+            display: flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+        }
+        .logo h1 {
+            color: #ffffff !important;
+            font-size: 20px !important;
+            font-weight: bold !important;
+            margin: 0 !important;
+        }
+        nav {
+            display: none !important;
+        }
+        @media (min-width: 768px) {
+            nav {
+                display: flex !important;
+            }
+            .menu-btn {
+                display: none !important;
+            }
+        }
+    </style>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="container">
+            <div class="flex">
+                <div class="logo">
+                    <i data-lucide="graduation-cap" style="width: 32px; height: 32px; color: #FFD700;"></i>
+                    <h1>Cameroon University Directory</h1>
+                </div>
+                <nav>
+                    <a href="index.html">Home</a>
+                    <a href="search.html">Search</a>
+                    <a href="about.html">About</a>
+                    <a href="student-login.html">Student Login</a>
+                    <a href="school-login.html">School Login</a>
+                </nav>
+                <button class="menu-btn">
+                    <i data-lucide="menu" style="width: 24px; height: 24px;"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Login Form -->
+    <div class="hero">
+        <div class="container">
+            <div class="text-center">
+                <h2 style="font-size: 32px; margin-bottom: 16px;">School Administrator Login</h2>
+                <p style="font-size: 18px; margin-bottom: 32px;">Manage your school's information</p>
+                
+                <div class="card" style="max-width: 400px; margin: 0 auto;">
+                    <form>
+                        <div class="form-group">
+                            <label>School Email</label>
+                            <input
+                                type="email"
+                                required
+                                class="form-control"
+                                placeholder="admin@school.cm"
+                            />
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input
+                                type="password"
+                                required
+                                class="form-control"
+                                placeholder="••••••••"
+                            />
+                        </div>
+                        
+                        <div class="form-group" style="display: flex; justify-content: space-between; align-items: center;">
+                            <label style="margin-bottom: 0; display: flex; align-items: center;">
+                                <input type="checkbox" style="margin-right: 8px;">
+                                <span style="font-size: 14px;">Remember me</span>
+                            </label>
+                            <a href="#" style="font-size: 14px; color: #FFD700;">Forgot password?</a>
+                        </div>
+                        
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                            style="width: 100%;"
+                        >
+                            Login
+                        </button>
+                    </form>
+                    
+                    <div class="text-center" style="margin-top: 24px;">
+                        <p style="font-size: 14px;">
+                            Don't have an account? 
+                            <a href="#" style="color: #FFD700; font-weight: 500;">
+                                Claim your school
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <div class="logo" style="justify-content: center; margin-bottom: 16px;">
+                <i data-lucide="graduation-cap" style="width: 24px; height: 24px; color: #FFD700;"></i>
+                <h3 style="font-size: 24px;">Cameroon University Directory</h3>
+            </div>
+            <p style="color: #cccccc; margin-bottom: 32px;">
+                Your gateway to higher education opportunities in Cameroon
+            </p>
+            <div style="display: flex; justify-content: center; gap: 24px; margin-bottom: 32px;">
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="search.html">Search</a>
+                <a href="student-login.html">Student Login</a>
+                <a href="school-login.html">School Login</a>
+            </div>
+            <div style="border-top: 1px solid #333333; padding-top: 32px; color: #cccccc;">
+                <p>&copy; 2024 Cameroon University Directory. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    </body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Register - Cameroon University Directory</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #000000;
+            border-bottom: 2px solid #FFD700;
+        }
+        header nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 24px;
+            font-weight: 500;
+        }
+        header nav a:hover {
+            color: #FFD700;
+        }
+        .hero {
+            background: linear-gradient(to right, #000000, #1a1a1a);
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom: 3px solid #FFD700;
+        }
+        .hero h1 {
+            color: #FFD700;
+            font-size: 36px;
+            font-weight: bold;
+            margin-bottom: 16px;
+        }
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #333333;
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        .card h2 {
+            color: #FFD700;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 16px;
+        }
+        .card p {
+            color: #cccccc;
+            line-height: 1.5;
+        }
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #FFD700;
+            border-radius: 6px;
+            font-size: 16px;
+            background-color: #1a1a1a;
+            color: #ffffff;
+        }
+        .form-control::placeholder {
+            color: #999999;
+        }
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        .btn-primary {
+            background: #FFD700;
+            color: #000000;
+            border: 2px solid #FFD700;
+        }
+        footer {
+            background: #000000;
+            color: #ffffff;
+            padding: 48px 20px;
+            text-align: center;
+            border-top: 2px solid #FFD700;
+        }
+        footer a {
+            color: #cccccc;
+            text-decoration: none;
+            margin: 0 12px;
+        }
+        footer a:hover {
+            color: #FFD700;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo h1 {
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0;
+        }
+        nav {
+            display: none;
+        }
+        @media (min-width: 768px) {
+            nav {
+                display: flex;
+            }
+            .menu-btn {
+                display: none;
+            }
+        }
+    </style>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="container">
+            <div class="flex">
+                <div class="logo">
+                    <i data-lucide="graduation-cap" style="width: 32px; height: 32px; color: #FFD700;"></i>
+                    <h1>Cameroon University Directory</h1>
+                </div>
+                <nav>
+                    <a href="index.html">Home</a>
+                    <a href="search.html">Search</a>
+                    <a href="about.html">About</a>
+                    <a href="student-login.html">Student Login</a>
+                    <a href="school-login.html">School Login</a>
+                </nav>
+                <button class="menu-btn">
+                    <i data-lucide="menu" style="width: 24px; height: 24px;"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Register Form -->
+    <div class="hero">
+        <div class="container">
+            <div class="text-center">
+                <h1>Student Registration</h1>
+                <p style="font-size: 18px; margin-bottom: 32px;">Create your account to save schools and track applications</p>
+                
+                <div class="card" style="max-width: 500px; margin: 0 auto;">
+                    <form>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                            <div>
+                                <label style="display: block; margin-bottom: 8px; font-weight: 500;">First Name</label>
+                                <input
+                                    type="text"
+                                    required
+                                    class="form-control"
+                                    placeholder="John"
+                                />
+                            </div>
+                            <div>
+                                <label style="display: block; margin-bottom: 8px; font-weight: 500;">Last Name</label>
+                                <input
+                                    type="text"
+                                    required
+                                    class="form-control"
+                                    placeholder="Doe"
+                                />
+                            </div>
+                        </div>
+                        
+                        <div style="margin-bottom: 16px;">
+                            <label style="display: block; margin-bottom: 8px; font-weight: 500;">Email Address</label>
+                            <input
+                                type="email"
+                                required
+                                class="form-control"
+                                placeholder="student@example.com"
+                            />
+                        </div>
+                        
+                        <div style="margin-bottom: 16px;">
+                            <label style="display: block; margin-bottom: 8px; font-weight: 500;">Phone Number</label>
+                            <input
+                                type="tel"
+                                required
+                                class="form-control"
+                                placeholder="+237 6XX XXX XXX"
+                            />
+                        </div>
+                        
+                        <div style="margin-bottom: 16px;">
+                            <label style="display: block; margin-bottom: 8px; font-weight: 500;">Password</label>
+                            <input
+                                type="password"
+                                required
+                                class="form-control"
+                                placeholder="••••••••"
+                            />
+                        </div>
+                        
+                        <div style="margin-bottom: 16px;">
+                            <label style="display: block; margin-bottom: 8px; font-weight: 500;">Confirm Password</label>
+                            <input
+                                type="password"
+                                required
+                                class="form-control"
+                                placeholder="••••••••"
+                            />
+                        </div>
+                        
+                        <div style="margin-bottom: 16px;">
+                            <label style="display: block; margin-bottom: 8px; font-weight: 500;">Region</label>
+                            <select class="form-control">
+                                <option value="">Select your region</option>
+                                <option value="centre">Centre</option>
+                                <option value="littoral">Littoral</option>
+                                <option value="west">West</option>
+                                <option value="northwest">Northwest</option>
+                                <option value="southwest">Southwest</option>
+                                <option value="north">North</option>
+                                <option value="far-north">Far North</option>
+                                <option value="adamawa">Adamawa</option>
+                                <option value="east">East</option>
+                                <option value="south">South</option>
+                            </select>
+                        </div>
+                        
+                        <div style="margin-bottom: 24px;">
+                            <label style="display: flex; align-items: center; margin-bottom: 0;">
+                                <input type="checkbox" style="margin-right: 8px;">
+                                <span style="font-size: 14px;">I agree to the Terms and Conditions</span>
+                            </label>
+                        </div>
+                        
+                        <button
+                            type="submit"
+                            class="btn btn-primary"
+                            style="width: 100%;"
+                        >
+                            Create Account
+                        </button>
+                    </form>
+                    
+                    <div style="text-align: center; margin-top: 24px;">
+                        <p style="font-size: 14px;">
+                            Already have an account? 
+                            <a href="student-login.html" style="color: #FFD700; font-weight: 500;">
+                                Login here
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="flex">
+                <div class="logo">
+                    <i data-lucide="graduation-cap" style="width: 32px; height: 32px; color: #FFD700;"></i>
+                    <h1>Cameroon University Directory</h1>
+                </div>
+                <nav>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="search.html">Search</a>
+                    <a href="student-login.html">Student Login</a>
+                    <a href="school-login.html">School Login</a>
+                </nav>
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex items-center justify-center space-x-2 mb-4">
+                <i data-lucide="graduation-cap" class="w-6 h-6"></i>
+                <h3 class="text-2xl font-bold">Cameroon University Directory</h3>
+            </div>
+            <p class="text-gray-400 mb-8">
+                Your gateway to higher education opportunities in Cameroon
+            </p>
+            <div class="flex justify-center space-x-6">
+                <a href="index.html" class="text-gray-400 hover:text-white transition-colors">Home</a>
+                <a href="about.html" class="text-gray-400 hover:text-white transition-colors">About</a>
+                <a href="search.html" class="text-gray-400 hover:text-white transition-colors">Search</a>
+                <a href="student-login.html" class="text-gray-400 hover:text-white transition-colors">Student Login</a>
+                <a href="school-login.html" class="text-gray-400 hover:text-white transition-colors">School Login</a>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-gray-400">
+                <p>&copy; 2024 Cameroon University Directory. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
