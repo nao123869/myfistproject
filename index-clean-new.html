@@ -1,0 +1,601 @@
+ <div class=" "></div><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cameroon University Directory</title>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 3px solid #FFD700;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.2);
+        }
+
+        header .flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        header .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        header .logo h1 {
+            color: #FFD700;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        header nav {
+            display: none;
+        }
+
+        header nav a {
+            color: #ffffff;
+            text-decoration: none;
+            margin-left: 32px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        header nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #FFD700;
+            transition: width 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #FFD700;
+            transform: translateY(-2px);
+        }
+
+        header nav a:hover::after {
+            width: 100%;
+        }
+
+        @media (min-width: 768px) {
+            header nav {
+                display: flex;
+            }
+            header .menu-btn {
+                display: none;
+            }
+        }
+
+        .hero {
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000000 100%);
+            padding: 120px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y="50" font-size="100" fill="rgba(255,215,0,0.03)">🎓</text></svg>');
+            background-size: 100px 100px;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-50px, -50px); }
+        }
+
+        .hero h1 {
+            color: #FFD700;
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 24px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: #cccccc;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .search-bar {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            position: relative;
+            z-index: 1;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 24px 70px 24px 32px;
+            border: 3px solid #FFD700;
+            border-radius: 50px;
+            font-size: 18px;
+            background: rgba(10, 10, 10, 0.9);
+            color: #ffffff;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(255, 215, 0, 0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .search-bar input:focus {
+            border-color: #FFC700;
+            background: rgba(15, 15, 15, 0.95);
+            box-shadow: 0 12px 48px rgba(255, 215, 0, 0.4);
+            outline: none;
+            transform: scale(1.02);
+        }
+
+        .search-bar input::placeholder {
+            color: #999999;
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(135deg, #FFD700, #FFC700);
+            color: #000000;
+            border: none;
+            padding: 16px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-btn:hover {
+            transform: translateY(-50%) scale(1.1) rotate(90deg);
+            box-shadow: 0 8px 32px rgba(255, 215, 0, 0.6);
+        }
+
+        .cta-section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .featured-section {
+            padding: 80px 20px;
+            background: linear-gradient(180deg, #000000 0%, #1a1a1a 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            color: #FFD700;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .section-title p {
+            color: #cccccc;
+            font-size: 18px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border: 2px solid #FFD700;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 32px;
+            box-shadow: 0 12px 40px rgba(255, 215, 0, 0.2);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(255, 215, 0, 0.3);
+            border-color: #FFC700;
+        }
+
+        .card h3 {
+            color: #FFD700;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .card p {
+            color: #cccccc;
+            line-height: 1.8;
+            font-size: 16px;
+            margin-bottom: 24px;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #FFD700, #FFC700);
+            color: #000000;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(255, 215, 0, 0.5);
+            background: linear-gradient(135deg, #FFC700, #FFD700);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #FFD700;
+            border: 2px solid #FFD700;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: #FFD700;
+            color: #000000;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-large {
+            padding: 20px 40px;
+            font-size: 18px;
+        }
+
+        .grid {
+            display: grid;
+            gap: 40px;
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        footer {
+            background: linear-gradient(180deg, #000000 0%, #1a1a1a 100%);
+            color: #ffffff;
+            padding: 60px 20px 40px;
+            text-align: center;
+            border-top: 3px solid #FFD700;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #FFD700, transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        footer .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 32px;
+        }
+
+        footer .footer-logo i {
+            width: 32px;
+            height: 32px;
+            color: #FFD700;
+        }
+
+        footer .footer-logo h3 {
+            color: #FFD700;
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        footer p {
+            color: #cccccc;
+            margin-bottom: 32px;
+            font-size: 16px;
+        }
+
+        footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        footer .footer-links a {
+            color: #cccccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+        }
+
+        footer .footer-links a:hover {
+            color: #FFD700;
+            transform: translateY(-2px);
+        }
+
+        footer .footer-bottom {
+            border-top: 1px solid #333333;
+            padding-top: 32px;
+            color: #cccccc;
+        }
+
+        @media (max-width: 767px) {
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+
+            .hero {
+                padding: 80px 20px 60px;
+            }
+
+            .featured-section {
+                padding: 60px 20px;
+            }
+
+            .section-title h2 {
+                font-size: 28px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-large {
+                padding: 16px 32px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <header>
+        <div class="container">
+            <div class="flex">
+                <div class="logo">
+                    <i data-lucide="graduation-cap"></i>
+                    <h1>Cameroon University Directory</h1>
+                </div>
+                <nav>
+                    <a href="index-clean-new.html">Home</a>
+                    <a href="search-improved.html">Search</a>
+                    <a href="about-pure.html">About</a>
+                    <a href="register-choice.html">Register</a>
+                    <a href="student-login-pure.html">Student Login</a>
+                    <a href="school-login.html">School Login</a>
+                </nav>
+                <button class="menu-btn">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <div class="text-center">
+                <h1>Find Your Perfect University</h1>
+                <p>
+                    Discover Cameroon's top universities and professional schools
+                </p>
+                
+                <!-- Search Bar -->
+                <div class="search-bar">
+                    <input
+                        type="text"
+                        placeholder="Search universities, programs, or locations..."
+                    />
+                    <button class="search-btn">
+                        <i data-lucide="search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <div class="container">
+            <div class="cta-buttons">
+                <a href="register-choice.html" class="btn btn-primary btn-large">Get Started</a>
+                <a href="search-improved.html" class="btn btn-secondary btn-large">Browse Schools</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Schools -->
+    <div class="featured-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Universities</h2>
+                <p>Discover Cameroon's top institutions</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="card">
+                    <h3>University of Yaoundé I</h3>
+                    <p>
+                        Cameroon's premier university offering comprehensive programs in sciences, humanities, and professional studies.
+                    </p>
+                    <a href="school-university-yaounde1.html" class="btn btn-primary">Learn More</a>
+                </div>
+                
+                <div class="card">
+                    <h3>University of Buea</h3>
+                    <p>
+                        Leading institution in Southwest region known for excellence in technology and engineering programs.
+                    </p>
+                    <a href="search-improved.html" class="btn btn-primary">Learn More</a>
+                </div>
+                
+                <div class="card">
+                    <h3>University of Dschang</h3>
+                    <p>
+                        Modern university with strong focus on agricultural sciences and environmental studies.
+                    </p>
+                    <a href="search-improved.html" class="btn btn-primary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-logo">
+                <i data-lucide="graduation-cap"></i>
+                <h3>Cameroon University Directory</h3>
+            </div>
+            <p>Your gateway to higher education opportunities in Cameroon</p>
+            <div class="footer-links">
+                <a href="index-clean-new.html">Home</a>
+                <a href="about-pure.html">About</a>
+                <a href="search-improved.html">Search</a>
+                <a href="register-choice.html">Register</a>
+                <a href="student-login-pure.html">Student Login</a>
+                <a href="school-login.html">School Login</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Cameroon University Directory. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
